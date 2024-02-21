@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using Microsoft.Extensions.Hosting;
+using MeteoBack.Entities;
+using System.Reflection.Metadata;
 
 namespace MeteoBack.DAL
 {
@@ -11,7 +13,10 @@ namespace MeteoBack.DAL
 	public class MeteoContext : DbContext
 	{
 		public DbSet<Meteo> Meteos { get; set; }
+		public DbSet<MeteoType> MeteoTypes { get; set; }
 		public DbSet<City> Cities { get; set; }
+
+
 
 
 		public MeteoContext(DbContextOptions options) : base(options)
@@ -20,40 +25,22 @@ namespace MeteoBack.DAL
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			//base.OnModelCreating(modelBuilder);
+			modelBuilder.Entity<City>()
+				.HasMany(e => e.Meteos)
+				.WithOne(e => e.City)
+				.HasForeignKey(e => e.CityId)
+				.IsRequired();
+
+
+			modelBuilder.Entity<Meteo>()
+				.HasMany(e => e.Meteotypes)
+				.WithOne(e => e.Meteo)
+				.HasForeignKey(e => e.MeteoId)
+				.IsRequired();
+
 		}
 
 	}
 
-	public class Meteo
-	{
-
-		[Key]
-		public int Id { get; set; }
-
-		public DateTime Date { get; set; }
-
-		public int TemperatureC { get; set; }
-
-		public int WindSpeed { get; set; }
-
-		public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-
-		public string? RainType { get; set; }
-
-		public string? SunType { get; set; }
-
-		public string? Summary { get; set; }
-
-	}
-
-	public class City
-	{
-		[Key]
-		public int Id { get; set; } 
-		public int MeteoId { get; set; }
-		public List<Meteo> Meteos { get; } = new();
-
-
-	}
+ 
 }
