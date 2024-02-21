@@ -18,6 +18,11 @@ namespace MeteoBack.DAL
 		{
 		}
 
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			//base.OnModelCreating(modelBuilder);
+		}
+
 	}
 
 	public class Meteo
