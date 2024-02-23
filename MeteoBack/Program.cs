@@ -1,5 +1,5 @@
 using MeteoBack.DAL;
-using MeteoBack.Repositoy;
+using MeteoBack.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 

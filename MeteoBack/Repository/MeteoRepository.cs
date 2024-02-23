@@ -2,7 +2,7 @@
 using MeteoBack.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace MeteoBack.Repositoy
+namespace MeteoBack.Repository
 {
 	public class MeteoRepository : IMeteoRepository
 	{

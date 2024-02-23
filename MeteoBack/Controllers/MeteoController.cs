@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MeteoBack.Repositoy;
+using MeteoBack.Repository;
 using MeteoBack.DAL;
 
 namespace MeteoBack.Controllers

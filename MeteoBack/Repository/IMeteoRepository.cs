@@ -1,6 +1,6 @@
 ﻿using MeteoBack.Entities;
 
-namespace MeteoBack.Repositoy
+namespace MeteoBack.Repository
 {
 	public interface IMeteoRepository { 
 
