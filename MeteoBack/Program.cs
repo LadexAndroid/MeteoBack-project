@@ -15,6 +15,8 @@ namespace MeteoBack
 
 			builder.Services.AddControllers();
 			builder.Services.AddScoped<IMeteoRepository, MeteoRepository>();
+			builder.Services.AddScoped<IMeteoTypeRepository, MeteoTypeRepository>();
+			builder.Services.AddScoped<ICityRepository, CityRepository>();
 			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
